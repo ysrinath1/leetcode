@@ -1,0 +1,26 @@
+
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        num1 = 0 
+        num2 = 0
+        count= 1
+        while(l1):
+            num1+=l1.val*count
+            count = count*10
+            l1=l1.next       
+        count = 1
+        while(l2):
+            num2+=l2.val*count
+            count = count*10
+            l2=l2.next      
+        result = num1+ num2
+        finalh= ListNode(-1)
+        helper = finalh
+        if (result==0):
+            return ListNode(0)
+        while(result!=0):
+            helper.next = ListNode(result%10)
+            result = result//10
+            helper = helper.next
+        return finalh.next
+        
